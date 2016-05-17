@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "jwt-simple": "^0.5.0",
     "mongoose": "^4.4.17",
     "morgan": "^1.7.0",
     "nodemon": "^1.9.2"
