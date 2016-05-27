@@ -36,3 +36,10 @@ export function authError(error) {
         payload: error
     };
 }
+
+
+export function signoutUser() {
+    localStorage.removeItem('token');
+    
+    return { type: UNAUTH_USER };
+}
