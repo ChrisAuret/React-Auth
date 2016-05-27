@@ -1,16 +1,22 @@
 // With redux-thunk, not limited to a single action but can dispatch as many as i want
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { AUTH_USER } from './types';
+import { 
+    AUTH_USER, 
+    UNAUTH_USER,
+    AUTH_ERROR 
+} from './types';
 
 const ROOT_URL = 'http://localhost:3090';
 
 export function signinUser({ email, password }) {
-    return function() {
+    return function(dispatch) {
         axios.post(`${ROOT_URL}/signin`, { email, password })
             .then(response => {
                 // Update state to indicate user is authenticated
-                dispatch({ type: AUTH_USER }) //redux-thunk
+                
+                console.log('dispatching');
+                dispatch({ type: AUTH_USER }); //redux-thunk
                 
                 //Save JWT token
                 localStorage.setItem('token', response.data.token);
@@ -19,7 +25,14 @@ export function signinUser({ email, password }) {
             })
             .catch(() =>  {
                 // bad request
-                
-            })
+                dispatch(authError('Bad login info'));
+            });
     }
+}
+
+export function authError(error) {
+    return {
+        type: AUTH_ERROR,
+        payload: error
+    };
 }
