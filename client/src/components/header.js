@@ -23,7 +23,6 @@ renderLinks() {
 
 render() {
     return (
-
     <nav className="navbar navbar-default">
       <div className="container-fluid">
         <div className="navbar-header">
