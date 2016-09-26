@@ -37,14 +37,13 @@ const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done) {
     // if it does, call 'done' with that 
     // otherwise, call done without a user object
     User.findById(payload.sub, function(err, user) {
-        if(err) { return done(err, false); }
+        if(err) { return done(err, false); }   
+        if(user) {
+            done(null, user);
+        } else {
+            done(null, false);
+        }
     })
-    
-    if(user) {
-        done(null, user);
-    } else {
-        done(null, false);
-    }
 })
 
 // Tell passport to use this strategy
