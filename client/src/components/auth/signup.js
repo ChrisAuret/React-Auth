@@ -24,6 +24,8 @@ class Signup extends Component {
         const { handleSubmit, fields: { email, password, passwordConfirm }} = this.props;
         
         return (
+            <div>
+            <h3>Sign up</h3>    
             <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                 <fieldset className="form-group">
                     <label>Email:</label>
@@ -42,7 +44,8 @@ class Signup extends Component {
                 </fieldset>
                 {this.renderAlert()}
                 <button action="submit" className="btn btn-primary">Sign up!</button>
-            </form>              
+            </form>
+            </div>              
         );        
     }
 }

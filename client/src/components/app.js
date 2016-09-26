@@ -5,9 +5,11 @@ import Header from './header';
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <div >
         <Header />
-          {this.props.children}
+          <div className="col-md-4">
+            {this.props.children}
+          </div>
       </div>
     );
   }
